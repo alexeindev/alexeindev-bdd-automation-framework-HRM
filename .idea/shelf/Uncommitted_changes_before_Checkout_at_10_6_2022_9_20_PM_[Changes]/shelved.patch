@@ -1,0 +1,43 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,13 +4,7 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="812daf52-4abf-4762-8c32-cc799dac6f8e" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/src/test/java/drivers/DriverInstance.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/drivers/strategies/Chrome.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/drivers/strategies/Driver.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/drivers/strategies/DriverManager.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/drivers/strategies/Firefox.java" afterDir="false" />
+-    </list>
++    <list default="true" id="812daf52-4abf-4762-8c32-cc799dac6f8e" name="Changes" comment="" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -29,13 +23,13 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "last_opened_file_path": "C:/Users/aleji/IdeaProjects/automation-framework-HRM/src/test/java"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/aleji/IdeaProjects/automation-framework-HRM/src/test/java&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">
