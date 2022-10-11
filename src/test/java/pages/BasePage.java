@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,6 +26,11 @@ public class BasePage {
 
     public void navigateToPage(String url) {
         driver.get(url);
+    }
+
+    public void navigateWithSideMenu(String moduleName) {
+        WebElement moduleElement = driver.findElement(By.xpath("//span[normalize-space()='%s']".formatted(moduleName)));
+        moduleElement.click();
     }
 
     @FindBy(className = "oxd-topbar-header-breadcrumb-module")
