@@ -11,8 +11,8 @@ import static stepdefinitions.Hooks.driver;
 
 
 public class LoginSteps {
-    BasePage basePage = new BasePage(driver);
-    LoginPage loginPage = new LoginPage(driver);
+    private BasePage basePage = new BasePage(driver);
+    private LoginPage loginPage = new LoginPage(driver);
 
     @Given("the user goes to the login page")
     public void theUserGoesToTheLoginPage() {
@@ -24,13 +24,8 @@ public class LoginSteps {
         loginPage.logUserIn("Admin", "admin123");
     }
 
-    @When("^the user navigates to the \"(.*)\" page$")
-    public void theUserNavigatesToThePage(String pageName) {
-        basePage.navigateWithSideMenu(pageName);
-    }
-
-    @Then("^the \"(.*)\" page should be displayed$")
-    public void thePageShouldBeDisplayed(String pageName) {
-        Assert.assertTrue(loginPage.verifyBreadcrumbTitle(pageName));
+    @Then("the user should be logged in the application")
+    public void theUserShouldBeLoggedInTheApplication() {
+        Assert.assertTrue(loginPage.verifyBreadcrumbTitle("PIM"));
     }
 }
