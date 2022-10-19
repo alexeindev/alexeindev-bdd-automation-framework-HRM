@@ -42,6 +42,13 @@ public class BasePage {
     @FindBy(xpath = "//button[normalize-space()='Add']")
     private WebElement addBtn;
 
+    @FindBy(css = ".oxd-userdropdown-tab")
+    private WebElement userDropDownBtn;
+
+    @FindBy(xpath = "//a[normalize-space()='Logout']")
+    private WebElement logOutBtn;
+
+
     public void clickOnResetBtn() {
         getResetBtn().click();
     }
@@ -60,6 +67,22 @@ public class BasePage {
 
     public WebDriver getDriver() {
         return driver;
+    }
+
+    private WebElement getUserDropDownBtn() {
+        return userDropDownBtn;
+    }
+
+    public void clickOnUserDropDownBtn() {
+        getUserDropDownBtn().click();
+    }
+
+    private WebElement geLogOutBtn() {
+        return logOutBtn;
+    }
+
+    public void clickOnLogOutBtn() {
+        geLogOutBtn().click();
     }
 
     public void navigateToPage(String url) {
