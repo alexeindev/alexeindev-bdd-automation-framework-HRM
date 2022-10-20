@@ -1,3 +1,4 @@
+@PIMTest
 Feature: PIM
 
   Background: the user is logged in

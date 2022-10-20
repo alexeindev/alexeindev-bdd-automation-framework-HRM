@@ -11,17 +11,17 @@ import pages.LoginPage;
 import static stepdefinitions.Hooks.driver;
 
 public class CommonSteps {
-    private BasePage basePage = new BasePage(driver);
-    private LoginPage loginPage = new LoginPage(driver);
-
-    @Then("the {string} page should be displayed")
-    public void thePageShouldBeDisplayed(String pageName) {
-        Assert.assertTrue(loginPage.verifyBreadcrumbTitle(pageName));
-    }
+    private final BasePage basePage = new BasePage(driver);
+    private final LoginPage loginPage = new LoginPage(driver);
 
     @When("the user navigates to the {string} page")
     public void theUserNavigatesToThePage(String pageName) {
         basePage.navigateWithSideMenu(pageName);
+    }
+
+    @Then("the {string} page should be displayed")
+    public void thePageShouldBeDisplayed(String pageName) {
+        Assert.assertTrue(loginPage.verifyBreadcrumbTitle(pageName));
     }
 
     @Then("a toast message with the text {string} is displayed")

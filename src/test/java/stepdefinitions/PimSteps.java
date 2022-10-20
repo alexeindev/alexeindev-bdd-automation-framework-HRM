@@ -15,14 +15,15 @@ import java.util.List;
 import java.util.Map;
 
 import static stepdefinitions.Hooks.driver;
+import static utilities.utilities.moduleNames;
+
 
 public class PimSteps {
 
-    private EmployeeListPage employeeListPage = new EmployeeListPage(driver);
-    private AddEmployeePage addEmployeePage = new AddEmployeePage(driver);
-    private ReportsPage reportsPage = new ReportsPage(driver);
-    private BasePage basePage = new BasePage(driver);
-
+    private final EmployeeListPage employeeListPage = new EmployeeListPage(driver);
+    private final AddEmployeePage addEmployeePage = new AddEmployeePage(driver);
+    private final ReportsPage reportsPage = new ReportsPage(driver);
+    private final BasePage basePage = new BasePage(driver);
     public static String employeeId = null;
 
 
@@ -43,18 +44,6 @@ public class PimSteps {
         addEmployeePage.clickOnSaveBtn();
     }
 
-    @And("the employee is displayed in the employee list")
-    public void theEmployeeIsDisplayedInTheEmployeeList() {
-        basePage.navigateWithSideMenu("PIM");
-        employeeListPage.filterEmployeeById(employeeId);
-    }
-
-    @And("the user filters the new employee by its id")
-    public void theUserFiltersTheNewEmployeeByItsId() {
-        basePage.navigateWithSideMenu("PIM");
-        employeeListPage.filterEmployeeById(employeeId);
-    }
-
     @When("the user deletes the employee")
     public void theUserDeletesTheEmployee() {
         employeeListPage.deleteEmployee(employeeId);
@@ -67,6 +56,18 @@ public class PimSteps {
 
     @Then("the reports page should be displayed")
     public void theReportsPageShouldBeDisplayed() {
-        Assert.assertEquals(reportsPage.getPageHeaderTitle().getText(),"Employee Reports");
+        Assert.assertEquals(reportsPage.getPageHeaderTitle().getText(), "Employee Reports");
+    }
+
+    @And("the employee is displayed in the employee list")
+    public void theEmployeeIsDisplayedInTheEmployeeList() {
+        basePage.navigateWithSideMenu(moduleNames.PIM.label);
+        employeeListPage.filterEmployeeById(employeeId);
+    }
+
+    @And("the user filters the new employee by its id")
+    public void theUserFiltersTheNewEmployeeByItsId() {
+        basePage.navigateWithSideMenu(moduleNames.PIM.label);
+        employeeListPage.filterEmployeeById(employeeId);
     }
 }
