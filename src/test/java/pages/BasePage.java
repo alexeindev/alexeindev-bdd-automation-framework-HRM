@@ -10,34 +10,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class BasePage {
     public WebDriver driver;
     private static WebDriverWait wait;
 
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
-        this.wait =  new WebDriverWait(driver, Duration.ofSeconds(5));
-        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
-        PageFactory.initElements(driver, this);
-    }
-
-    @FindBy(className = "oxd-topbar-header-breadcrumb-module")
-    public WebElement titleBreadcrumb;
-
-
-    @FindBy(xpath = "//button[normalize-space()='Reset']")
-    private WebElement resetBtn;
-
-    @FindBy(xpath = "//button[normalize-space()='Search']")
-    private WebElement searchBtn;
-
     @FindBy(xpath = "//button[normalize-space()='Save']")
     private WebElement saveBtn;
-
-    @FindBy(xpath = "//button[normalize-space()='Cancel']")
-    private WebElement cancelBtn;
 
     @FindBy(xpath = "//button[normalize-space()='Add']")
     private WebElement addBtn;
@@ -48,17 +27,26 @@ public class BasePage {
     @FindBy(xpath = "//a[normalize-space()='Logout']")
     private WebElement logOutBtn;
 
+    @FindBy(xpath = "//button[normalize-space()='Yes, Delete']")
+    private WebElement acceptDeleteBtn;
 
-    public void clickOnResetBtn() {
-        getResetBtn().click();
+    @FindBy(xpath = "//button[normalize-space()='Search']")
+    private WebElement searchBtn;
+
+    @FindBy(css = ".oxd-brand-banner")
+    private WebElement mainLogoImg;
+
+    @FindBy(className = "oxd-topbar-header-breadcrumb-module")
+    public WebElement titleBreadcrumb;
+
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        PageFactory.initElements(driver, this);
     }
 
-    private WebElement getResetBtn() {
-        return resetBtn;
-    }
-
-    public void clickOnSearchBtn() {
-        getSearchBtn().click();
+    public WebElement getMainLogoImg() {
+        return mainLogoImg;
     }
 
     private WebElement getSearchBtn() {
@@ -73,20 +61,44 @@ public class BasePage {
         return userDropDownBtn;
     }
 
+    private WebElement getSaveBtn() {
+        return saveBtn;
+    }
+
+    private WebElement getLogOutBtn() {
+        return logOutBtn;
+    }
+
+    public WebElement getAcceptDeleteBtnFromModal() {
+        return acceptDeleteBtn;
+    }
+
+    public WebElement getAddBtn() {
+        return addBtn;
+    }
+
+    public void clickOnAddBtn() {
+        getAddBtn().click();
+    }
+
+    public void clickOnSaveBtn() {
+        getSaveBtn().click();
+    }
+
+    public void clickOnAcceptDeleteBtnFromModal() {
+        getAcceptDeleteBtnFromModal().click();
+    }
+
     public void clickOnUserDropDownBtn() {
         getUserDropDownBtn().click();
     }
 
-    private WebElement geLogOutBtn() {
-        return logOutBtn;
-    }
-
     public void clickOnLogOutBtn() {
-        geLogOutBtn().click();
+        getLogOutBtn().click();
     }
 
-    public void navigateToPage(String url) {
-        driver.get(url);
+    public void clickOnSearchBtn() {
+        getSearchBtn().click();
     }
 
     public void navigateWithSideMenu(String moduleName) {
@@ -99,25 +111,15 @@ public class BasePage {
         moduleElement.click();
     }
 
-    public void clickOnSaveBtn() {
-        getSaveBtn().click();
-    }
-
-    private WebElement getSaveBtn() {
-        return saveBtn;
-    }
-
-    public void clickOnCancelBtn()  {
-        getCancelBtn().click();
-    }
-
-    private WebElement getCancelBtn() {
-        return cancelBtn;
-    }
-
     public boolean verifyBreadcrumbTitle(String breadcrumbTitle) {
         String currentTitle = titleBreadcrumb.getText();
         return breadcrumbTitle.equals(currentTitle);
+    }
+
+    public WebElement getToastMessage() throws NoSuchElementException {
+        WebElement toastMessageElement = driver.findElement(By.className("oxd-text--toast-message"));
+        wait.until(ExpectedConditions.visibilityOf(toastMessageElement));
+        return toastMessageElement;
     }
 
     public WebElement getTextBox(String labelName) {
@@ -142,33 +144,6 @@ public class BasePage {
         autocompleteElement.sendKeys(optionToSelect.substring(0, 2));
         WebElement option = driver.findElement(By.xpath("//div[@role='option']/span[contains(text(),'%s')]".formatted(formattedOption)));
         option.click();
-    }
-
-    public WebElement getToastMessage() throws NoSuchElementException {
-        WebElement toastMessageElement = driver.findElement(By.className("oxd-text--toast-message"));
-        wait.until(ExpectedConditions.visibilityOf(toastMessageElement));
-        return toastMessageElement;
-    }
-
-    //Delete Modal
-
-    @FindBy(xpath = "//button[normalize-space()='Yes, Delete']")
-    private WebElement acceptDeleteBtn;
-
-    public WebElement getAcceptDeleteBtnFromModal() {
-        return acceptDeleteBtn;
-    }
-
-    public void clickOnAcceptDeleteBtnFromModal() {
-        getAcceptDeleteBtnFromModal().click();
-    }
-
-    public WebElement getAddBtn() {
-        return addBtn;
-    }
-
-    public void clickOnAddBtn() {
-        getAddBtn().click();
     }
 
 }

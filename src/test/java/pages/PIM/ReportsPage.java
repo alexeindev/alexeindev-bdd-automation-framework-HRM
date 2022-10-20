@@ -6,30 +6,26 @@ import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
 public class ReportsPage extends BasePage {
-    public ReportsPage(WebDriver driver) {
-        super(driver);
-    }
-
     @FindBy(css = ".oxd-table-filter-title")
     private WebElement pageHeaderTitle;
 
     @FindBy(css = ".oxd-icon.bi-trash")
     private WebElement deleteBtn;
 
-    public WebElement getDeleteBtn() {
-        return deleteBtn;
+    public ReportsPage(WebDriver driver) {
+        super(driver);
     }
 
-    public void clickOnDeleteReportBtn() {
-        getDeleteBtn().click();
+    public WebElement getDeleteBtn() {
+        return deleteBtn;
     }
 
     public WebElement getPageHeaderTitle() {
         return pageHeaderTitle;
     }
 
-    public WebElement getReportNameTextBox() {
-        return getTextBox("Report Name");
+    public void clickOnDeleteReportBtn() {
+        getDeleteBtn().click();
     }
 
     public void setReportNameTextBox(String value) {

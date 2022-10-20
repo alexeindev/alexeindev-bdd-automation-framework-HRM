@@ -5,10 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LoginPage extends BasePage {
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
-
     @FindBy(css = ".orangehrm-login-title")
     private WebElement loginPageTitle;
 
@@ -26,6 +22,10 @@ public class LoginPage extends BasePage {
 
     @FindBy(css = ".oxd-text.oxd-text--span.oxd-input-field-error-message.oxd-input-group__message")
     public WebElement requiredFieldMessage;
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
 
     public WebElement getLoginPageTitle() {
         return loginPageTitle;
