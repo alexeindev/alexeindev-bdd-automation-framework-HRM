@@ -19,17 +19,17 @@ public class LoginSteps {
 
     @When("the user enters only the username")
     public void theUserEntersOnlyTheUsername() {
-        loginPage.logUserIn("OnlyUserName", "");
+        loginPage.logUserIn(System.getenv("username"), "");
     }
 
     @When("the user enters only the password")
     public void theUserEntersOnlyThePassword() {
-        loginPage.logUserIn("", "onlyPass");
+        loginPage.logUserIn("", System.getenv("password"));
     }
 
     @When("the user sets the correct credentials")
     public void theUserSetsTheCorrectCredentials() {
-        loginPage.logUserIn("Admin", "admin123");
+        loginPage.logUserIn(System.getenv("username"), System.getenv("password"));
     }
 
     @When("the user logs out")
