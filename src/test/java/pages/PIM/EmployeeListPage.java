@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
+import utilities.utilities.moduleNames;
 public class EmployeeListPage extends BasePage {
 
     @FindBy(css = ".oxd-icon.bi-trash")
@@ -21,8 +22,12 @@ public class EmployeeListPage extends BasePage {
         return deleteBtn;
     }
 
-    public void senKeysToEmployeeIdTextBox(String value) {
+    public void setEmployeeIdTextBox(String value) {
         setTextBox("Employee Id", value);
+    }
+
+    public void setEmployeeNameAutocompleteTextBox(String value) {
+        setAutocompleteByText("Employee Name",value);
     }
 
     public void clickOnDeleteEmployeeBtn() {
@@ -30,13 +35,19 @@ public class EmployeeListPage extends BasePage {
     }
 
     public void filterEmployeeById(String employeeId) {
-        navigateWithSideMenu("PIM");
-        senKeysToEmployeeIdTextBox(employeeId);
+        navigateWithSideMenu(moduleNames.PIM.label);
+        setEmployeeIdTextBox(employeeId);
+        clickOnSearchBtn();
+    }
+
+    public void filterEmployeeByName(String employeeName) {
+        navigateWithSideMenu(moduleNames.PIM.label);
+        setEmployeeNameAutocompleteTextBox(employeeName);
         clickOnSearchBtn();
     }
 
     public void deleteEmployee(String employeeId) {
-        navigateWithSideMenu("PIM");
+        navigateWithSideMenu(moduleNames.PIM.label);
         filterEmployeeById(employeeId);
         clickOnDeleteEmployeeBtn();
         clickOnAcceptDeleteBtnFromModal();
