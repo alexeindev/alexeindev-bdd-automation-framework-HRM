@@ -146,4 +146,11 @@ public class BasePage {
         option.click();
     }
 
+    public void setAutocompleteByTextWithoutSpaces(String labelName, String optionToSelect) {
+        WebElement autocompleteElement = driver.findElement(By.xpath("//label[normalize-space()='%s']/../following-sibling::div/div/div/input".formatted(labelName)));
+        autocompleteElement.sendKeys(optionToSelect.substring(0, 2));
+        WebElement option = driver.findElement(By.xpath("//div[@role='option']/span[contains(text(),'%s')]".formatted(optionToSelect)));
+        option.click();
+    }
+
 }

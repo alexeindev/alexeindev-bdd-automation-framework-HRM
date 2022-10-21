@@ -25,6 +25,7 @@ public class PimSteps {
     private final ReportsPage reportsPage = new ReportsPage(driver);
     private final BasePage basePage = new BasePage(driver);
     public static String employeeId = null;
+    public static String employeeName = null;
 
 
     @Given("the user clicks on the Add button of the PIM page")
@@ -39,6 +40,7 @@ public class PimSteps {
         String firstName = signUpForms.get(0).get("firstName");
         String middleName = signUpForms.get(0).get("middleName");
         String lastName = signUpForms.get(0).get("lastName");
+        employeeName = firstName + middleName + lastName;
         employeeId = addEmployeePage.getEmployeeIdTextBoxValue();
         addEmployeePage.fillAddEmployeeForm(firstName, middleName, lastName);
         addEmployeePage.clickOnSaveBtn();
@@ -69,5 +71,10 @@ public class PimSteps {
     public void theUserFiltersTheNewEmployeeByItsId() {
         basePage.navigateWithSideMenu(moduleNames.PIM.label);
         employeeListPage.filterEmployeeById(employeeId);
+    }
+
+    @When("the user filters the new employee by name")
+    public void theUserFiltersTheNewEmployeeByName() {
+        employeeListPage.filterEmployeeByName(employeeName);
     }
 }

@@ -15,7 +15,7 @@ public class utilities {
         BUZZ("Buzz");
         public final String label;
 
-        private moduleNames(String label) {
+        moduleNames(String label) {
             this.label = label;
         }
     }
@@ -28,7 +28,20 @@ public class utilities {
         RECRUITMENT("Recruitment");
         public final String label;
 
-        private pimTabNames(String label) {
+        pimTabNames(String label) {
+            this.label = label;
+        }
+    }
+
+    public enum adminTabNames {
+        USER_MANAGEMENT("User Management"),
+        JOB("Job"),
+        ORGANIZATION("Organization"),
+        QUALIFICATIONS("Qualifications"),
+        NATIONALITIES("Nationalities");
+        public final String label;
+
+        adminTabNames(String label) {
             this.label = label;
         }
     }
