@@ -1,10 +1,5 @@
-@PIMTest
+@login @PIMTest
 Feature: PIM
-
-  Background: the user is logged in
-    Given the user goes to the login page
-    When the user sets the correct credentials
-    Then the user should be logged in the application
 
   Scenario: the user navigates to the PIM page using the side menu
     When the user navigates to the "PIM" page
@@ -26,6 +21,15 @@ Feature: PIM
       | FilterTest | Alejandra  | Lopez    |
     When the user filters the new employee by its id
     Then the employee is displayed in the employee list
+
+  @deleteEmployee
+  Scenario: the user can filter an employee by name
+    And the user adds an employee with the information
+      | firstName | middleName | lastName |
+      | Alejandra | Maria      | Lopez    |
+    When the user filters the new employee by name
+    Then the employee is displayed in the employee list
+
 
   Scenario: the user can delete an employee
     And the user adds an employee with the information
@@ -54,7 +58,7 @@ Feature: PIM
       | reportName     | displayFieldGroup | displayField |
       | TestReportName | Personal          | Nationality  |
     And the user saves the report
-    And the user filters the new report by the name "TestReportName"
+    Then the user filters the new report by the name "TestReportName"
 
   Scenario: the user deletes a new report
     When the user navigates to the "Reports" tab
